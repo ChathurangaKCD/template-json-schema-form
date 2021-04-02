@@ -1,0 +1,11 @@
+{
+  "name": "schema-defs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "npx serve"
+  },
+  "author": "Chathuranga Dassanayake",
+  "license": "ISC"
+}

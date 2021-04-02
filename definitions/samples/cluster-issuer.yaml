@@ -1,0 +1,42 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    # You must replace this email address with your own.
+    # Let's Encrypt will use this to contact you about expiring
+    # certificates, and issues related to your account.
+    email: "placeholder"
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # Secret resource that will be used to store the account's private key.
+      name: example-issuer-account-key
+    # Add a single challenge solver, HTTP01 using nginx
+    solvers: {}
+    somestrarr: {}
+    somenumber: 0
+  containers: {}
+---
+schemas:
+  - path: spec.acme.solvers
+    ref: "#/definitions/acme_solver"
+    description: ""
+  - path: spec.acme.somestrarr
+    ref: "#/definitions/str_array"
+    description: ""
+  - path: spec.acme.somenumber
+    type: number
+    title: "Some number"
+    description: ""
+  - path: spec.containers
+    ref: "#/definitions/containers"
+    description: ""
+  - path: spec.acme.email
+    ref: "#/definitions/email_address"
+    title: "Your email address"
+    description: ""
+  - path: spec.acme.privateKeySecretRef.name
+    type: string
+    title: "PrivateKeySecretRef name"
+    description: ""

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "$id": "http://localhost:5000/schemas/http01.json",
+  "type": "object",
+  "title": "Container",
+  "properties": {
+    "name": {
+      "title": "Container name",
+      "type": "string"
+    },
+    "image": { "title": "Container image", "type": "string" },
+    "ports": {
+      "title": "Ports",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "containerPort": {
+            "title": "port",
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

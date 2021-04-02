@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "$id": "http://localhost:5000/schemas/dns01.json",
+  "type": "object",
+  "title": "DNS01",
+  "properties": {
+    "selector": {
+      "type": "null"
+    },
+    "providers": {
+      "type": "object",
+      "properties": {
+        "ingress": {
+          "type": "object",
+          "properties": {
+            "class": {
+              "const": "nginx"
+            }
+          }
+        }
+      }
+    }
+  }
+}

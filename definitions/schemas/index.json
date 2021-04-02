@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "$id": "http://localhost:5000/schemas/index.json",
+  "$defs": {
+    "acme_solver": {
+      "oneOf": [
+        { "$ref": "http://localhost:5000/schemas/http01.json" },
+        { "$ref": "http://localhost:5000/schemas/dns01.json" }
+      ]
+    },
+    "str_array": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "containers": {
+      "type": "array",
+      "items": { "$ref": "http://localhost:5000/schemas/container.json" },
+      "addBtnText": "Add container"
+    },
+    "email_address": {
+      "$ref": "http://localhost:5000/schemas/email.yaml"
+    }
+  }
+}

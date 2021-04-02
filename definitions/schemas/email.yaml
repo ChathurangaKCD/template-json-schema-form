@@ -1,0 +1,4 @@
+$schema: "http://json-schema.org/draft/2019-09/schema#"
+$id: "http://localhost:5000/schemas/email.json"
+type: string
+format: email #https://json-schema.org/understanding-json-schema/reference/string.html#format
