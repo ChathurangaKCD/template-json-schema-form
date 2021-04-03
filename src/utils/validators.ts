@@ -1,20 +1,19 @@
-import { Schema } from '../interfaces/form.interfaces';
-import { useMemo } from 'react';
+import { Schema } from "../interfaces/form.interfaces";
 
 // export const isRequired = (required: boolean) => (value: any) =>
 //   !required || value !== undefined || value !== null ? undefined : 'Required';
 
 const mustBeAString = (value: any) => {
-  return typeof value !== 'string' || value.length === 0
-    ? 'Required'
+  return typeof value !== "string" || value.length === 0
+    ? "Required"
     : undefined;
 };
 
 const mustBeANumber = (value: any) =>
-  isNaN(value) || typeof value !== 'number' ? 'Must be a number' : undefined;
+  isNaN(value) || typeof value !== "number" ? "Must be a number" : undefined;
 
 const mustBeAnInteger = (value: any) =>
-  !Number.isInteger(value) ? 'Must be an integer' : undefined;
+  !Number.isInteger(value) ? "Must be an integer" : undefined;
 
 const allowUndefinedAndNull = (validator: validatorFn, allow: boolean) => (
   value: any
@@ -29,13 +28,13 @@ const getDefaultValidators = (
   required: boolean
 ): validatorFn[] => {
   switch (schemaType) {
-    case 'number': {
+    case "number": {
       return [allowUndefinedAndNull(mustBeANumber, !required)];
     }
-    case 'integer': {
+    case "integer": {
       return [allowUndefinedAndNull(mustBeAnInteger, !required)];
     }
-    case 'string': {
+    case "string": {
       return [allowUndefinedAndNull(mustBeAString, !required)];
     }
     default:
@@ -87,12 +86,12 @@ function getValidators(
 ) {
   const _validators = (validatorStrs || [])
     .map(
-      key =>
+      (key) =>
         schema[key] !== undefined &&
         validators[key] !== undefined &&
         validators[key](schema[key])
     )
-    .filter(validator => typeof validator === 'function');
+    .filter((validator) => typeof validator === "function");
   const validate = composeValidators(
     ...getDefaultValidators(schema.type, required),
     ...(_validators as validatorFn[])

@@ -16,24 +16,29 @@ spec:
     solvers: {}
     somestrarr: {}
     somenumber: 0
+    someinteger: 0
   containers: {}
 ---
 schemas:
   - path: spec.acme.solvers
-    ref: "#/definitions/acme_solver"
+    $ref: "#/definitions/acme_solver"
     description: ""
   - path: spec.acme.somestrarr
-    ref: "#/definitions/str_array"
+    $ref: "#/definitions/str_array"
     description: ""
   - path: spec.acme.somenumber
     type: number
     title: "Some number"
     description: ""
+  - path: spec.acme.someinteger
+    type: integer
+    title: "Some integer"
+    description: ""
   - path: spec.containers
-    ref: "#/definitions/containers"
+    $ref: "#/definitions/containers"
     description: ""
   - path: spec.acme.email
-    ref: "#/definitions/email_address"
+    $ref: "#/definitions/email_address"
     title: "Your email address"
     description: ""
   - path: spec.acme.privateKeySecretRef.name

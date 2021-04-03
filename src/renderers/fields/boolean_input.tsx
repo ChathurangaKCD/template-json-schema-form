@@ -3,6 +3,7 @@ import React from "react";
 import { RenderFnProps } from "../../interfaces/renderers.interfaces";
 
 interface RenderBooleanInputFnProps extends RenderFnProps {}
+
 export function RenderBooleanInput({
   dataPath,
   schemaPath,

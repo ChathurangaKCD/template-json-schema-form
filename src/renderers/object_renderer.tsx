@@ -1,9 +1,9 @@
+import { Grid } from "@material-ui/core";
 import React, { useMemo } from "react";
 import { useFormSchema } from "../form/schema_context";
+import { ObjectRendererProps } from "../interfaces/renderers.interfaces";
 import { getDataSubPath, getSchemaSubPath } from "../utils/schema_path_utils";
 import { SchemaRenderer } from "./schema_renderer";
-import { ObjectRendererProps } from "../interfaces/renderers.interfaces";
-import { Grid } from "@material-ui/core";
 
 /**
  * Render Object Type

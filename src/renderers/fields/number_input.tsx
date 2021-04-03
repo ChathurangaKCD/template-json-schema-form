@@ -24,8 +24,11 @@ export function RenderNumberInput({
         label={schema.title}
         validate={validators}
         required={required}
-        parse={(value) => Number(value) as any}
-        // parse={(value) => Number(value)}
+        inputProps={{
+          inputMode: "numeric",
+          pattern: schema.type === "integer" ? "[0-9]*" : "[0-9.]*",
+        }}
+        isNumeric
       />
     </div>
   );

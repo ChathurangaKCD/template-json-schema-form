@@ -1,9 +1,9 @@
+import { string as str } from "yup";
 import {
   ERROR_INVALID_EMAIL,
   ERROR_INVALID_PHONE_NUMBER,
   ERROR_REQUIRED,
 } from "./form_constants";
-import { string as str } from "yup";
 
 export const composeValidators = (...validators: any[]) => (value: any) =>
   validators.reduce((error, validator) => error || validator(value), undefined);
@@ -34,6 +34,7 @@ export function validateName(val: any) {
 }
 
 const orgName = requiredString.concat(maxLength(25));
+
 export function validateOrgName(val: any) {
   try {
     orgName.validateSync(val);
@@ -44,6 +45,7 @@ export function validateOrgName(val: any) {
 }
 
 const projectName = requiredString.concat(maxLength(25)).concat(requiredName);
+
 export function validateProjectName(val: any) {
   try {
     projectName.validateSync(val);
@@ -153,6 +155,7 @@ export const noSpacesAllowed = str()
   .matches(/^([^\s])*$/, "No spaces allowed");
 
 const keyValueKey = requiredString.concat(noSpacesAllowed);
+
 export function validateKey(val: any) {
   try {
     keyValueKey.validateSync(val);

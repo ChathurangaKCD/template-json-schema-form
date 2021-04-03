@@ -1,13 +1,13 @@
 import { Button, Grid } from "@material-ui/core";
 import React from "react";
 import { useForm } from "react-final-form";
-import { FieldArray, useFieldArray } from "react-final-form-arrays";
+import { useFieldArray } from "react-final-form-arrays";
 import { useFormSchema } from "../form/schema_context";
 import {
   ArrayRendererProps,
   RenderFnProps,
 } from "../interfaces/renderers.interfaces";
-import { getSchemaSubPath, getUiSubPath } from "../utils/schema_path_utils";
+import { getSchemaSubPath } from "../utils/schema_path_utils";
 import { RenderEnumSelect } from "./fields/enum_select";
 import { RenderUnsupportedField } from "./fields/unsupported_field";
 import { SchemaRenderer } from "./schema_renderer";

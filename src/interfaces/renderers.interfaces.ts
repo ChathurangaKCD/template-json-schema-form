@@ -8,9 +8,13 @@ export interface RendererProps {
 }
 
 export interface SchemaRendererProps extends RendererProps {}
+
 export interface ArrayRendererProps extends RendererProps {}
+
 export interface ObjectRendererProps extends RendererProps {}
+
 export interface FieldRendererProps extends RendererProps {}
+
 export interface TypeRendererProps extends RendererProps {}
 
 export interface RenderFnProps extends RendererProps {

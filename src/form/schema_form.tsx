@@ -1,14 +1,20 @@
 import arrayMutators from "final-form-arrays";
 import createDecorator from "final-form-focus";
-import React, { useState, useMemo } from "react";
-import { Form, FormSpy } from "react-final-form";
+import setFieldData from "final-form-set-field-data";
+import React from "react";
+import { Form } from "react-final-form";
 import { SchemaFormProps } from "../interfaces/form.interfaces";
 import { SchemaRenderer } from "../renderers/schema_renderer";
 import { SchemaContextProvider } from "./schema_context";
-import { useSchemaValidator } from "./schema_validator";
-import { validateData } from "./data_validator";
 import { SchemaValidationError } from "./schema_error";
+import { useSchemaValidator } from "./schema_validator";
+
 const focusOnError = createDecorator();
+
+const mutators = {
+  ...arrayMutators,
+  setFieldData,
+};
 
 export function SchemaForm({
   schema,
@@ -30,9 +36,7 @@ export function SchemaForm({
         onSubmit={onSubmit}
         initialValues={{ ...initialValues }}
         subscription={{ submitting: true, pristine: true }}
-        mutators={{
-          ...arrayMutators,
-        }}
+        mutators={mutators}
         decorators={[focusOnError]}
         render={({ handleSubmit, form, submitting, pristine }) => {
           return (

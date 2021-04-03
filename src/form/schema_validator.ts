@@ -1,9 +1,8 @@
-import Ajv, { ErrorObject } from "ajv";
 import RefParser from "@apidevtools/json-schema-ref-parser";
-import { Schema } from "interfaces/form.interfaces";
-import { useState, useEffect, useReducer } from "react";
-import { defaultDefs } from "./definitions";
+import Ajv, { ErrorObject } from "ajv";
 import axios from "axios";
+import { Schema } from "interfaces/form.interfaces";
+import { useEffect, useReducer } from "react";
 
 const ajv = new Ajv({ allErrors: true, $data: true });
 
@@ -15,6 +14,7 @@ interface ValidationAction {
   schema?: Schema | null;
   isValid?: boolean;
 }
+
 function validationReducer(_: any, action: ValidationAction) {
   switch (action.type) {
     case "validated": {
@@ -27,22 +27,28 @@ function validationReducer(_: any, action: ValidationAction) {
     }
   }
 }
+
 interface Valid {
   schema: Schema;
   state: "valid";
 }
+
 interface Invalid {
   errors: ErrorObject[];
   state: "invalid";
 }
+
 interface Validating {
   state: "validating";
 }
+
 type SchemaValidator = Valid | Invalid | Validating;
+
 interface Definitions {
   $schema: "http://json-schema.org/draft/2019-09/schema#";
   $defs: Record<string, any>;
 }
+
 export function useSchemaValidator(schema: Schema) {
   const [state, dispatch] = useReducer(validationReducer, {
     state: "validating",

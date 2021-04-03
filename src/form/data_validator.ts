@@ -1,6 +1,7 @@
 import Ajv from "ajv";
 import { Schema } from "interfaces/form.interfaces";
 import set from "lodash.set";
+
 const ajv = new Ajv({ allErrors: true, $data: true, verbose: true });
 
 export function validateData(schema: Schema, options = {}) {

@@ -1,16 +1,17 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { SchemaForm } from "./form/schema_form";
-import axios from "axios";
-import { convertYamlToJSON } from "utils/yaml_utils";
+import { SchemaForm } from "form/schema_form";
+
 const YAML = require("js-yaml4");
 
 type Fields = Array<{
   path: string;
   type?: string;
-  ref?: string;
+  $ref?: string;
   title?: string;
 }>;
+
 function App() {
   const [schema, setSchema] = useState<any>(null);
   useEffect(() => {
@@ -27,25 +28,19 @@ function App() {
         const [template, fields] = json;
         (fields["schemas"] as Fields).forEach((f, i) => {
           const pathName = `item-${i}`;
-          const { ref, type, ...rest } = f;
-          schema["properties"][pathName] = type
-            ? { ...rest, type: type }
-            : { ...rest, $ref: ref };
+          schema["properties"][pathName] = f;
         });
         setSchema(schema);
       }
     }
+
     loadSchema();
   }, []);
 
   if (!schema) return <div>"loading"</div>;
   return (
     <div className="App">
-      <SchemaForm
-        schema={schema}
-        initialValues={{}}
-        onSubmit={() => {}}
-      ></SchemaForm>
+      <SchemaForm schema={schema} initialValues={{}} onSubmit={() => {}} />
     </div>
   );
 }

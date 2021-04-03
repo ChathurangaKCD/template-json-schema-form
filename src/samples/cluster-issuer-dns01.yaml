@@ -9,10 +9,10 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
-    # An empty 'selector' means that this solver matches all domains
-    - selector: {}
-      dns01:
-        providers:
-        - name: route53
-          route53:
-            region: us-east-1
+      # An empty 'selector' means that this solver matches all domains
+      - selector: { }
+        dns01:
+          providers:
+            - name: route53
+              route53:
+                region: us-east-1

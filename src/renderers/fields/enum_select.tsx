@@ -4,6 +4,7 @@ import { RenderFnProps } from "../../interfaces/renderers.interfaces";
 import { RenderUnsupportedField } from "./unsupported_field";
 
 interface RenderEnumSelectFnProps extends RenderFnProps {}
+
 /**
  * Render select field for enums
  * * single value
